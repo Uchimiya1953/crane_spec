@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ラフタークレーン主要諸元ツリー</title>
+<style>
+:root{--ink:#17212b;--muted:#617080;--line:#d8e0e7;--brand:#0b5d7a;--bg:#f4f7f9;--ok:#176b45;--missing:#8a5a00;--check:#7a3d00}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",Meiryo,sans-serif;line-height:1.55}button{font:inherit}header{background:linear-gradient(135deg,#083b53,#0b718e);color:#fff;padding:24px 16px 20px}header h1{margin:0 auto 5px;max-width:1100px;font-size:clamp(1.35rem,4vw,2rem)}header p{max-width:1100px;margin:0 auto;color:#dceff5;font-size:.9rem}.wrap{max-width:1100px;margin:auto;padding:14px 12px 40px}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:thin}.tab{min-height:46px;white-space:nowrap;border:1px solid #b8c8d1;border-radius:10px;background:#fff;color:var(--ink);padding:9px 15px;cursor:pointer;font-weight:700}.tab[aria-selected=true]{background:var(--brand);border-color:var(--brand);color:#fff}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.tool{min-height:44px;border:1px solid #b8c8d1;border-radius:9px;background:#fff;padding:8px 13px;cursor:pointer}.tool:hover,.tool:focus-visible,.tab:focus-visible{outline:3px solid #8bd0e1;outline-offset:1px}.summary{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}.summary h2{font-size:1.25rem;margin:0 0 4px}.source{font-size:.8rem;color:var(--muted);overflow-wrap:anywhere}.notice{font-size:.85rem;background:#fff8e5;border-left:4px solid #d79a00;padding:10px 12px;margin:10px 0 14px}.tree{display:grid;gap:10px}.node{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}.node>summary{list-style:none;cursor:pointer;min-height:50px;padding:13px 15px;font-weight:750;display:flex;align-items:center;gap:9px}.node>summary::-webkit-details-marker{display:none}.node>summary:before{content:"＋";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e5f0f4;color:var(--brand);font-weight:800;flex:0 0 auto}.node[open]>summary:before{content:"−"}.children{padding:0 12px 12px 40px;display:grid;gap:8px}.leaf{display:grid;grid-template-columns:minmax(9rem,1fr) auto auto;gap:8px;align-items:start;border-top:1px solid #edf1f3;padding:10px 0}.leaf:first-child{border-top:0}.name{font-weight:650}.val{font-weight:800;text-align:right;overflow-wrap:anywhere}.unit{color:var(--brand);font-weight:700;min-width:2.2rem}.meta{grid-column:1/-1;color:var(--muted);font-size:.78rem}.badge{display:inline-block;font-size:.7rem;font-weight:800;border-radius:999px;padding:2px 7px;margin-left:6px;vertical-align:middle}.ok{color:var(--ok)}.ok .badge{background:#e3f5eb}.missing{color:var(--missing)}.missing .badge{background:#fff0c8}.unreadable{color:#8a1f1f}.unreadable .badge{background:#ffe2e2}.check{color:var(--check)}.check .badge{background:#ffe9d5}.table-wrap{overflow-x:auto;padding:0 12px 12px 40px}.capacity{border-collapse:collapse;width:100%;min-width:620px;font-size:.78rem}.capacity th,.capacity td{border:1px solid var(--line);padding:6px 7px;text-align:right;white-space:nowrap}.capacity th{background:#edf5f7;text-align:center}.caption{font-weight:700;margin:10px 0 4px}.foot{font-size:.8rem;color:var(--muted);margin-top:14px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:600px){header{padding:19px 12px}.wrap{padding:10px 8px 30px}.children{padding-left:20px}.leaf{grid-template-columns:1fr auto;gap:4px}.unit{grid-column:2;grid-row:1;text-align:right}.val{text-align:right}.meta{grid-column:1/-1}.toolbar .tool{flex:1 1 42%}}
+</style>
+</head>
+<body>
+<header><h1>ラフタークレーン主要諸元ツリー</h1><p>カタログ記載値を原文の単位で整理。未記載・読み取り不能・要確認を明示しています。</p></header>
+<main class="wrap">
+<nav id="tabs" class="tabs" aria-label="機種選択"></nav>
+<div class="toolbar"><button class="tool" id="openAll">全展開</button><button class="tool" id="closeAll">全折りたたみ</button></div>
+<section id="app" aria-live="polite"></section>
+<p class="foot">注意：本ページはカタログ確認用です。実作業では必ず対象機の原本定格総荷重表、作業条件、法令・社内基準を確認してください。</p>
+</main>
+<script>
+/* 追加・編集は、このデータオブジェクトの models に機種オブジェクトを追記してください。 */
+const CRANE_DATA = {
+  models: [
+    {id:"mr130ri",name:"13t｜KATO MR-130Ri",source:"13t_MR-130Ri_カタログ.pdf（全6頁）",children:[
+      {name:"車両基本諸元",children:[
+        {name:"全長",value:"7440",unit:"mm",note:"p.2 寸法図",status:"ok"},{name:"全幅",value:"1995",unit:"mm",note:"p.1 寸法図（車体幅として図示）",status:"ok"},{name:"全高",value:"2580",unit:"mm",note:"p.2 寸法図。サスペンションロック時は全高より−30mm",status:"ok"},{name:"軸距",value:"PDFに記載なし",unit:"",note:"p.1–2",status:"missing"},{name:"車両総重量",value:"PDFに記載なし",unit:"",note:"p.1–6",status:"missing"},{name:"軸重",value:"PDFに記載なし",unit:"",note:"p.1–6",status:"missing"}]},
+      {name:"ブーム・ジブ性能",children:[
+        {name:"ブーム長さ",value:"5.3 / 9.04 / 12.78 / 16.52 / 20.26 / 24.0",unit:"m",note:"p.3 作業範囲図、p.4 定格総荷重表",status:"ok"},{name:"ブーム角度",value:"−7.5～82",unit:"°",note:"p.2 寸法図",status:"ok"},{name:"ジブ長さ",value:"3.6 / 5.5",unit:"m",note:"p.3、p.5",status:"ok"},{name:"最大地上揚程",value:"図からの読み取り値は要確認",unit:"m",note:"p.3 作業範囲図。数値表としての最大値は記載なし",status:"check"},{name:"定格総荷重表",value:"p.4–5に掲載",unit:"",note:"作業半径・ブーム長・張出状態別。アプリには代表値を収録",status:"ok"}]},
+      {name:"アウトリガ仕様",children:[
+        {name:"張出幅",value:"4.75 / 4.3 / 3.7 / 2.7 / 1.64",unit:"m",note:"p.4–6 定格総荷重表注意事項",status:"ok"},{name:"フロート寸法",value:"φ350",unit:"mm",note:"p.1 寸法図",status:"ok"},{name:"型式",value:"H型アウトリガ（最縮小張出はH型機のみ適用）",unit:"",note:"p.6",status:"ok"}]},
+      {name:"走行・機動性能",children:[
+        {name:"最小回転半径（2輪ステアリング）",value:"6.50",unit:"m",note:"p.1（計算値）",status:"ok"},{name:"最小回転半径（4輪ステアリング）",value:"3.92",unit:"m",note:"p.1（計算値）",status:"ok"},{name:"最高速度",value:"PDFに記載なし",unit:"",note:"p.1–6",status:"missing"},{name:"登坂能力",value:"PDFに記載なし",unit:"",note:"p.1–6",status:"missing"}]},
+      {name:"主要定格総荷重（抜粋）",table:{headers:["作業半径(m)","最大張出・全周 5.3mブーム(t)","最大張出・全周 24.0mブーム(t)","出典"],rows:[["1.5","13.00","—","p.4"],["3.0","8.20","—","p.4"],["5.0","—","3.20","p.4"],["10.0","—","1.75","p.4"],["20.0","—","0.52","p.4"]]}}
+    ]},
+    {id:"gr160n5",name:"16t｜TADANO GR-160N(Ⅴ)",source:"16t_GR-160N(Ⅴ)_カタログ.pdf（全8頁）",children:[
+      {name:"車両基本諸元",children:[
+        {name:"全長",value:"8310",unit:"mm",note:"p.1–2 寸法図",status:"ok"},{name:"全幅（車体）",value:"2200",unit:"mm",note:"p.1–2 寸法図",status:"ok"},{name:"全幅（アウトリガフロート外端・最大張出時）",value:"5600",unit:"mm",note:"p.1 寸法図",status:"ok"},{name:"全高",value:"3150",unit:"mm",note:"p.1–2 寸法図",status:"ok"},{name:"軸距",value:"3200",unit:"mm",note:"p.2 寸法図",status:"ok"},{name:"車両総重量",value:"PDFに記載なし",unit:"",note:"p.1–8。基本通行条件重量Dの記載はあるが、車両総重量の数値ではない",status:"missing"},{name:"軸重",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"}]},
+      {name:"ブーム・ジブ性能",children:[
+        {name:"ブーム長さ",value:"6.5 / 10.7 / 14.9 / 19.3 / 23.6 / 28.0",unit:"m",note:"p.3–4",status:"ok"},{name:"ブーム角度",value:"−9～82.5",unit:"°",note:"p.1 寸法図",status:"ok"},{name:"ジブ長さ",value:"4.5 / 6.9",unit:"m",note:"p.3、p.5–6",status:"ok"},{name:"最大地上揚程",value:"図からの読み取り値は要確認",unit:"m",note:"p.3 作業範囲図。数値表としての最大値は記載なし",status:"check"},{name:"定格総荷重表",value:"p.4–7に掲載",unit:"",note:"作業半径・ブーム長・張出状態別。アプリには代表値を収録",status:"ok"}]},
+      {name:"アウトリガ仕様",children:[
+        {name:"張出幅",value:"5.2 / 4.8 / 4.4 / 3.2 / 1.79",unit:"m",note:"p.1、p.4–8",status:"ok"},{name:"フロート外端（最大張出時）",value:"5600",unit:"mm",note:"p.1 寸法図",status:"ok"},{name:"フロート径",value:"φ400",unit:"mm",note:"p.1 寸法図",status:"ok"},{name:"アウトリガ型式",value:"H型",unit:"",note:"p.1–2、p.8",status:"ok"}]},
+      {name:"走行・機動性能",children:[
+        {name:"最小回転半径（前2輪ステアリング）",value:"8.50",unit:"m",note:"p.2（計算値）",status:"ok"},{name:"最小回転半径（4輪ステアリング）",value:"4.80",unit:"m",note:"p.2（計算値）",status:"ok"},{name:"最小回転半径（後2輪ステアリング）",value:"8.50",unit:"m",note:"p.2（計算値）",status:"ok"},{name:"最高速度",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"},{name:"登坂能力",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"},{name:"つり荷走行速度",value:"1.6以下",unit:"km/h",note:"p.7–8、アウトリガ不使用時",status:"ok"}]},
+      {name:"主要定格総荷重（抜粋）",table:{headers:["作業半径(m)","最大張出・全周 6.5mブーム(t)","最大張出・全周 28.0mブーム(t)","出典"],rows:[["2.5","16.00","—","p.4"],["4.0","12.50","3.50","p.4"],["8.0","—","3.40","p.4"],["15.0","—","1.75","p.4"],["24.5","—","0.40","p.4"]]}}
+    ]},
+    {id:"sr250r",name:"25t｜KATO SR-250R",source:"25t_SR-250R_カタログ.pdf（全8頁）",children:[
+      {name:"車両基本諸元",children:[
+        {name:"全長",value:"11565",unit:"mm",note:"p.1–2 寸法図",status:"ok"},{name:"全幅（車体）",value:"2620",unit:"mm",note:"p.1–2 寸法図（後方図）",status:"ok"},{name:"全高",value:"3341",unit:"mm",note:"p.1 寸法図。サスペンションロック時は全高より−40mm",status:"ok"},{name:"軸距",value:"PDFに記載なし",unit:"",note:"p.1–2",status:"missing"},{name:"車両総重量",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"},{name:"軸重",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"}]},
+      {name:"ブーム・ジブ性能",children:[
+        {name:"ブーム長さ",value:"9.35 / 16.4 / 23.45 / 30.5",unit:"m",note:"p.4–5、p.7",status:"ok"},{name:"ブーム角度",value:"最小9350～最大30500（伸縮ブーム長）；角度は定格表に状態別記載",unit:"",note:"p.1、p.5–7",status:"check"},{name:"ジブ長さ",value:"8.7 / 13.1",unit:"m",note:"p.4、p.6",status:"ok"},{name:"最大地上揚程",value:"図からの読み取り値は要確認",unit:"m",note:"p.4 作業範囲図。数値表としての最大値は記載なし",status:"check"},{name:"定格総荷重表",value:"p.5–7に掲載",unit:"",note:"作業半径・ブーム長・張出状態別。アプリには代表値を収録",status:"ok"}]},
+      {name:"アウトリガ仕様",children:[
+        {name:"張出幅（H型）",value:"6.6 / 6.0 / 5.0 / 3.8 / 2.31",unit:"m",note:"p.5、p.8",status:"ok"},{name:"型式",value:"H型・X型",unit:"",note:"p.1–2、p.5",status:"ok"},{name:"フロート径",value:"φ230",unit:"mm",note:"p.1–2 寸法図",status:"ok"},{name:"最縮小張出",value:"2.31（H型）",unit:"m",note:"p.5、p.8。ジブ作業不可",status:"ok"}]},
+      {name:"走行・機動性能",children:[
+        {name:"最小回転半径（前2輪ステアリング）",value:"8.20",unit:"m",note:"p.3（計算値）",status:"ok"},{name:"最小回転半径（4輪ステアリング）",value:"4.90",unit:"m",note:"p.3（計算値・構内移動）",status:"ok"},{name:"最高速度",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"},{name:"登坂能力",value:"PDFに記載なし",unit:"",note:"p.1–8",status:"missing"},{name:"走行つり速度",value:"2未満",unit:"km/h",note:"p.7–8、アウトリガ不使用時",status:"ok"}]},
+      {name:"主要定格総荷重（抜粋）",table:{headers:["作業半径(m)","最大張出・全周 9.35mブーム(t)","最大張出・全周 30.5mブーム(t)","出典"],rows:[["2.5","25.00","—","p.5"],["4.0","23.00","8.00","p.5"],["8.0","—","7.60","p.5"],["15.0","—","4.00","p.5"],["27.9","—","0.80","p.5"]]}}
+    ]}
+  ]
+};
+const state={model:0};
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;",'\'':"&#39;"}[m]));
+const statusLabel={ok:"記載値",missing:"未記載",unreadable:"読み取り不能",check:"要確認"};
+function leaf(n){const st=n.status||"ok";return `<div class="leaf ${st}"><div class="name">${esc(n.name)}<span class="badge">${statusLabel[st]}</span></div><div class="val">${esc(n.value)}</div><div class="unit">${esc(n.unit)}</div><div class="meta">${esc(n.note||"")}</div></div>`}
+function table(t){return `<div class="table-wrap"><div class="caption">定格総荷重表（代表値・全表は原本参照）</div><table class="capacity"><thead><tr>${t.headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`}
+function node(n,root=false){if(n.table)return `<section class="node"><div class="children">${table(n.table)}</div></section>`;return `<details class="node" ${root?"open":""}><summary>${esc(n.name)}</summary><div class="children">${(n.children||[]).map(x=>x.children?node(x):leaf(x)).join("")}</div></details>`}
+function render(){const m=CRANE_DATA.models[state.model];document.getElementById("tabs").innerHTML=CRANE_DATA.models.map((x,i)=>`<button class="tab" role="tab" aria-selected="${i===state.model}" data-i="${i}">${esc(x.name)}</button>`).join("");document.getElementById("app").innerHTML=`<section class="summary"><h2>${esc(m.name)}</h2><div class="source">出典：${esc(m.source)}</div><div class="notice">定格総荷重の抜粋値は検索・閲覧用です。空欄はその組合せが表に掲載されていないことを示します。換算・推測・補完はしていません。</div></section><div class="tree">${m.children.map(x=>x.children?node(x,true):node(x)).join("")}</div>`;document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{state.model=Number(b.dataset.i);render()}))}
+document.getElementById("openAll").addEventListener("click",()=>document.querySelectorAll("details.node").forEach(x=>x.open=true));document.getElementById("closeAll").addEventListener("click",()=>document.querySelectorAll("details.node").forEach(x=>x.open=false));render();
+</script>
+</body>
+</html>
